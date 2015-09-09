@@ -37,8 +37,7 @@ int function( void *data ) {
 
         count++;
     }
-
-    //TODO loop?
+    
     kthread_alive = false;
     return 0;
 }
