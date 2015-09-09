@@ -37,7 +37,7 @@ int function( void *data ) {
 
         count++;
     }
-    
+
     kthread_alive = false;
     return 0;
 }
@@ -60,6 +60,8 @@ void cleanup_module( void ) {
     if( kthread_alive ) {
         threadfn = kthread_stop(ts);
         printk("kthread_stop invoked\n");
+        
+        // threadfn is the return value of 'function' so this should never happen
         if( threadfn ) { printk("The timer is a zombie...\n"); }
     } else {
         printk("kthread already finished -- not invoking kthread_stop\n");
